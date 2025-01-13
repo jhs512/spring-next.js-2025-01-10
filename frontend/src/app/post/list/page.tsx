@@ -93,7 +93,7 @@ export default async function Page({
             <Link
               key={pageNum}
               className="px-2 py-1 border rounded"
-              href={`?page=${pageNum}`}
+              href={`?page=${pageNum}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`}
             >
               {pageNum}
             </Link>
