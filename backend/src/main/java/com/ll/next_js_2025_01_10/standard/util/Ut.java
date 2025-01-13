@@ -2,6 +2,7 @@ package com.ll.next_js_2025_01_10.standard.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.ll.next_js_2025_01_10.global.app.AppConfig;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.SneakyThrows;
@@ -27,8 +28,7 @@ public class Ut {
     }
 
     public static class json {
-        private static final ObjectMapper om = new ObjectMapper()
-                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+        private static final ObjectMapper om = AppConfig.getObjectMapper();
 
         @SneakyThrows
         public static String toString(Object obj) {

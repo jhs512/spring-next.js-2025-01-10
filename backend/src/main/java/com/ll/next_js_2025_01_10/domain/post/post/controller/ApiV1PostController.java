@@ -96,7 +96,7 @@ public class ApiV1PostController {
             Member actor = rq.getActor();
 
             if (actor == null) {
-                throw new ServiceException("401-1", "로그인이 필요합니다.");
+                throw new ServiceException("401-1", "비밀글 입니다. 로그인 후 이용해주세요.");
             }
 
             post.checkActorCanRead(actor);
