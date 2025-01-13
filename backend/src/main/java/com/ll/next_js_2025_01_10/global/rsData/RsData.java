@@ -2,6 +2,7 @@ package com.ll.next_js_2025_01_10.global.rsData;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.ll.next_js_2025_01_10.standard.base.Empty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.lang.NonNull;
@@ -20,7 +21,7 @@ public class RsData<T> {
     private final T data;
 
     public RsData(String resultCode, String msg) {
-        this(resultCode, msg, null);
+        this(resultCode, msg, (T) new Empty());
     }
 
     @JsonIgnore

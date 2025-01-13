@@ -7,6 +7,7 @@ import com.ll.next_js_2025_01_10.domain.member.member.service.MemberService;
 import com.ll.next_js_2025_01_10.global.exceptions.ServiceException;
 import com.ll.next_js_2025_01_10.global.rq.Rq;
 import com.ll.next_js_2025_01_10.global.rsData.RsData;
+import com.ll.next_js_2025_01_10.standard.base.Empty;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -104,7 +105,7 @@ public class ApiV1MemberController {
     @DeleteMapping("/logout")
     @Transactional(readOnly = true)
     @Operation(summary = "로그아웃", description = "apiKey, accessToken 토큰을 제거합니다.")
-    public RsData<Void> logout() {
+    public RsData<Empty> logout() {
         rq.deleteCookie("accessToken");
         rq.deleteCookie("apiKey");
 
