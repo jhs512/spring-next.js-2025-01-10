@@ -1,5 +1,6 @@
 import createClient from "openapi-fetch";
 import type { paths } from "@/lib/backend/apiV1/schema";
+import Link from "next/link";
 
 const client = createClient<paths>({
   baseUrl: "http://localhost:8080",
@@ -85,6 +86,20 @@ export default async function Page({
           </li>
         ))}
       </ul>
+
+      <div className="flex gap-2">
+        {Array.from({ length: responseBody.totalPages }, (_, i) => i + 1).map(
+          (pageNum) => (
+            <Link
+              key={pageNum}
+              className="px-2 py-1 border rounded"
+              href={`?page=${pageNum}`}
+            >
+              {pageNum}
+            </Link>
+          )
+        )}
+      </div>
     </div>
   );
 }
