@@ -17,6 +17,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.lang.NonNull;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +32,11 @@ public class ApiV1PostController {
 
 
     record PostStatisticsResBody(
+            @NonNull
             long totalPostCount,
+            @NonNull
             long totalPublishedPostCount,
+            @NonNull
             long totalListedPostCount
     ) {
     }
