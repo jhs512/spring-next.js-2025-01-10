@@ -18,7 +18,11 @@ export default function ClientPage({
 }) {
   return (
     <div>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <input type="hidden" name="page" value="1" />
         <select name="pageSize" defaultValue={pageSize}>
           <option disabled>페이당 행 수</option>
