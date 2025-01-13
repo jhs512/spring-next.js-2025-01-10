@@ -72,6 +72,24 @@ export default async function Page({
 
       <hr />
 
+      <div className="flex my-2 gap-2">
+        {Array.from({ length: responseBody.totalPages }, (_, i) => i + 1).map(
+          (pageNum) => (
+            <Link
+              key={pageNum}
+              className={`px-2 py-1 border rounded ${
+                pageNum === responseBody.currentPageNumber ? "text-red-500" : ""
+              }`}
+              href={`?page=${pageNum}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`}
+            >
+              {pageNum}
+            </Link>
+          )
+        )}
+      </div>
+
+      <hr />
+
       <ul>
         {responseBody.items.map((item) => (
           <li key={item.id} className="border-[2px] border-[red] my-3">
@@ -87,12 +105,16 @@ export default async function Page({
         ))}
       </ul>
 
-      <div className="flex gap-2">
+      <hr />
+
+      <div className="flex my-2 gap-2">
         {Array.from({ length: responseBody.totalPages }, (_, i) => i + 1).map(
           (pageNum) => (
             <Link
               key={pageNum}
-              className="px-2 py-1 border rounded"
+              className={`px-2 py-1 border rounded ${
+                pageNum === responseBody.currentPageNumber ? "text-red-500" : ""
+              }`}
               href={`?page=${pageNum}&pageSize=${pageSize}&searchKeywordType=${searchKeywordType}&searchKeyword=${searchKeyword}`}
             >
               {pageNum}
