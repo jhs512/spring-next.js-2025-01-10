@@ -2,25 +2,34 @@ package com.ll.next_js_2025_01_10.domain.post.post.dto;
 
 import com.ll.next_js_2025_01_10.domain.post.post.entity.Post;
 import lombok.Getter;
+import org.springframework.lang.NonNull;
 
 import java.time.LocalDateTime;
 
 @Getter
 public class PostDto {
+    @NonNull
     private long id;
 
+    @NonNull
     private LocalDateTime createDate;
 
+    @NonNull
     private LocalDateTime modifyDate;
 
+    @NonNull
     private long authorId;
 
+    @NonNull
     private String authorName;
 
+    @NonNull
     private String title;
 
+    @NonNull
     private boolean published;
 
+    @NonNull
     private boolean listed;
 
     public PostDto(Post post) {
