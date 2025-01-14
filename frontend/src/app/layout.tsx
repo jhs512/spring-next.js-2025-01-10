@@ -33,6 +33,7 @@ export default function RootLayout({
             <Link href="/">홈</Link>
             <Link href="/about">소개</Link>
             <Link href="/post/list">글</Link>
+            <Link href="/member/login">로그인</Link>
           </div>
         </header>
 
