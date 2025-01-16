@@ -1,7 +1,7 @@
 import client from "@/lib/backend/client";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import ClientLayout from "./ClientLayout";
 import "./globals.css";
 
@@ -25,20 +25,16 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const response = await client.GET("/api/v1/members/me", {
-    headers: {
-      cookie: (await cookies()).toString(),
-    },
-  });
+  const headersList = await headers();
 
-  const me = response.data
-    ? response.data
-    : {
-        id: 0,
-        createDate: "",
-        modifyDate: "",
-        nickname: "",
-      };
+  const me = {
+    id: headersList.get("x-member-id")
+      ? parseInt(headersList.get("x-member-id")!)
+      : 0,
+    nickname: decodeURIComponent(headersList.get("x-member-nickname") || ""),
+    createDate: headersList.get("x-member-create-date") || "",
+    modifyDate: headersList.get("x-member-modify-date") || "",
+  };
 
   return (
     <html lang="ko">
